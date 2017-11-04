@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">GetStuffDone</string>
+    <string name="task_title">Task</string>
+    <string name="button_edit">Edit</string>
+    <string name="button_complete">Complete</string>
+    <string name="text_add_task">Add Task</string>
+    <string name="text_see_pending">Pending</string>
+    <string name="text_add_from_pending">Quick Add</string>
+    <string name="insert_task_title_text">Task</string>
+    <string name="done_with_task_button_text">Done</string>
+    <string name="button_remove_text">Remove</string>
+
+    <string-array name="TodoOrPendingList">
+        <item>TODAY</item>
+        <item>PENDING</item>
+    </string-array>
+</resources>
