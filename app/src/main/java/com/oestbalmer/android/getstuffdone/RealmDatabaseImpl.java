@@ -108,23 +108,57 @@ public class RealmDatabaseImpl implements RealmDatabase {
     }
 
     @Override
-    public void addUserInfo(String name) {
-        final UserInfo
+    public void addNameToUserInfo(String name) {
+        checkAndCreateUser();
+        final UserInfo fUserInfo = getUserInfo();
+        final String fName = name;
+        mRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                fUserInfo.setName(fName);
+            }
+        });
+    }
+
+    @Override
+    public void createUserInfo() {
+        final UserInfo fUserInfo = UserInfo.newUserInfoClean();
+        mRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                mRealm.copyToRealm(fUserInfo);
+            }
+        });
     }
 
     @Override
     public boolean userExist() {
-        final RealmResults<UserInfo> User = mRealm.where(UserInfo.class).findFirst();
+        final UserInfo User = mRealm.where(UserInfo.class).findFirst();
         return false;
     }
 
     @Override
-    public void addPoints(int points) {
+    public void checkAndCreateUser() {
+        if(!userExist()){
+            createUserInfo();
+        }
+    }
 
+    @Override
+    public void addPoints(int points) {
+        checkAndCreateUser();
+        final UserInfo fUserInfo = getUserInfo();
+        final int fPoints = points;
+        mRealm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                fUserInfo.addPoints(fPoints);
+            }
+        });
     }
 
     @Override
     public UserInfo getUserInfo() {
-        return null;
+        return mRealm.where(UserInfo.class).findFirst();
     }
 }

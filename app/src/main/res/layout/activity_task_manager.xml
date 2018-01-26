@@ -8,11 +8,21 @@
 
     tools:context="com.oestbalmer.android.getstuffdone.View.TaskManagerActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/top_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimaryDark"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="56dp"
-        android:id="@+id/task_manager_layout">
+        android:id="@+id/task_manager_layout"
+        android:layout_below="@id/top_toolbar">
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"

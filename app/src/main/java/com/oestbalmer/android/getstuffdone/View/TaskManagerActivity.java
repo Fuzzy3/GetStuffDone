@@ -13,8 +13,11 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +43,7 @@ public class TaskManagerActivity extends AppCompatActivity {
 
     @BindView(R.id.recycler_view_tasks) RecyclerView mRecyclerView;
     @BindView(R.id.bottom_navigation) BottomNavigationView mBottomNavigationView;
+    @BindView(R.id.top_toolbar) Toolbar mTopToolbar;
     private TaskCardsAdapter mTaskCardsAdapter;
     private RealmDatabase mDatabase;
     private List<Task> mTaskListSelection;
@@ -58,7 +62,7 @@ public class TaskManagerActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mTaskCardsAdapter = new TaskCardsAdapter(mDatabase.getAllTodayTasks());
         mRecyclerView.setAdapter(mTaskCardsAdapter);
-
+        setSupportActionBar(mTopToolbar);
         setupTaskListSelection();
 
         mBottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -135,6 +139,12 @@ public class TaskManagerActivity extends AppCompatActivity {
         mySnackbar.show();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.top_menu, menu);
+        return true;
+    }
 
     public class TaskViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.task_title) TextView mTextViewTaskTitle;

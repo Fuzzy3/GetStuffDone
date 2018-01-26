@@ -19,10 +19,12 @@ public interface RealmDatabase {
     void unCompleteTask(Task task);
     void removeTask(Task task);
 
-    void addUserInfo(String name);
+    void createUserInfo();
+    void addNameToUserInfo(String name);
     boolean userExist();
     void addPoints(int points);
     UserInfo getUserInfo();
+    void checkAndCreateUser();
 
 
 

@@ -18,8 +18,12 @@ public class UserInfo implements RealmModel{
         mId = USERID;
     }
 
-    public static UserInfo newUserInfo(String name) {
+    public static UserInfo newUserInfoName(String name) {
         return new UserInfo(name, 0);
+    }
+
+    public static UserInfo newUserInfoClean() {
+        return new UserInfo("Not entered", 0);
     }
 
     public void addPoints(int points) {
