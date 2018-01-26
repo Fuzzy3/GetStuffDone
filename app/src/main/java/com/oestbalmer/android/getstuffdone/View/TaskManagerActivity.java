@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -97,6 +98,21 @@ public class TaskManagerActivity extends AppCompatActivity {
         // Create and show the dialog.
         DialogFragment newFragment = QuickAddTaskFragment.newInstance();
         newFragment.show(getSupportFragmentManager(), "tag");
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_useraccount:
+                startActivity(UserAccountActivity.newInstance(TaskManagerActivity.this));
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 
     private void setupTaskListSelection() {

@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.oestbalmer.android.getstuffdone.Model.Task;
 import com.oestbalmer.android.getstuffdone.Model.TaskType;
+import com.oestbalmer.android.getstuffdone.Model.UserInfo;
 
 import io.realm.OrderedRealmCollection;
 import io.realm.Realm;
@@ -106,5 +107,24 @@ public class RealmDatabaseImpl implements RealmDatabase {
         return mRealm.where(Task.class).findAll();
     }
 
+    @Override
+    public void addUserInfo(String name) {
+        final UserInfo
+    }
 
+    @Override
+    public boolean userExist() {
+        final RealmResults<UserInfo> User = mRealm.where(UserInfo.class).findFirst();
+        return false;
+    }
+
+    @Override
+    public void addPoints(int points) {
+
+    }
+
+    @Override
+    public UserInfo getUserInfo() {
+        return null;
+    }
 }

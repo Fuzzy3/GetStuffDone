@@ -9,6 +9,9 @@
     <string name="insert_task_title_text">Task</string>
     <string name="done_with_task_button_text">Done</string>
     <string name="button_remove_text">Remove</string>
+    <string name="action_favorite">userinfo</string>
+    <string name="usernameLabel">Name</string>
+    <string name="collected_points">Collected Points:</string>
 
     <string-array name="TodoOrPendingList">
         <item>TODAY</item>

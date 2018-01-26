@@ -15,6 +15,7 @@ public class Task extends RealmObject {
     private String mTaskDescription;
     private String mTaskTitle;
     private String mTaskType;
+    private int points;
 
     public Task(String taskTitle, String taskType) {
         mId = UUID.randomUUID().toString();
@@ -30,6 +31,14 @@ public class Task extends RealmObject {
         mId = id;
         mTaskTitle = taskTitle;
         mTaskType = taskType;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
     }
 
     public String getTaskType() {
